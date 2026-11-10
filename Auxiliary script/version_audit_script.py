@@ -9,7 +9,9 @@ Phase: A13 (Tool Development, Stage 4)
       纯标准库(urllib/json/re)实现,单工具失败不影响全局。
 """
 import json
+import os
 import re
+import subprocess
 import sys
 import urllib.request
 import urllib.error
@@ -20,7 +22,7 @@ from datetime import date
 # 脚本位置: UdonSharpAgent/Auxiliary script/version_audit_script.py
 # 知识库位置: UdonSharpAgent/memory/_curator_tools/
 SCRIPT_DIR = Path(__file__).resolve().parent
-MEMORY_ROOT = SCRIPT_DIR.parent / 'memory'
+MEMORY_ROOT = SCRIPT_DIR.parent / 'LLMWikiPage'
 REPORT_DIR = MEMORY_ROOT / '_curator_tools'
 sys.stdout.reconfigure(encoding='utf-8')
 TODAY = date.today().isoformat()
@@ -28,6 +30,32 @@ EXCLUDE_DIRS = {'_curator_tools', '__pycache__'}
 
 # GitHub API 公共端点(无需 token,限流 60 req/h)
 GITHUB_API = "https://api.github.com"
+
+
+def resolve_github_token() -> str:
+    """解析 GitHub token:环境变量优先,其次 gh CLI。
+
+    未认证的 api.github.com 只有 60 次/小时,跑一轮 20 个工具就会打满
+    (而且每个 prerelease 回退还会多消耗几次)。有 token 时上限 5000 次/小时。
+    """
+    for key in ('GITHUB_TOKEN', 'GH_TOKEN'):
+        val = os.environ.get(key, '').strip()
+        if val:
+            return val
+    try:
+        out = subprocess.run(
+            ['gh', 'auth', 'token'],
+            capture_output=True, text=True, timeout=10, check=False,
+        )
+        token = (out.stdout or '').strip()
+        if out.returncode == 0 and token:
+            return token
+    except Exception:  # noqa: BLE001
+        pass
+    return ''
+
+
+GITHUB_TOKEN = resolve_github_token()
 HTTP_TIMEOUT = 10  # 秒
 USER_AGENT = "KB-Version-Audit-Bot/1.0"
 
@@ -39,28 +67,28 @@ STALE_DAYS = 365
 # 顺序: 核心 Avatar 工具 → Shader 工具 → 辅助工具
 TOOLS = [
     # 核心 Avatar 工具
-    ("Modular Avatar", "https://github.com/bdunderscore/modular-avatar", "1.17.1", "modular-avatar"),
-    ("AvatarOptimizer", "https://github.com/anatawa12/AvatarOptimizer", "1.9.14", "AvatarOptimizer"),
-    ("VRCFury", "https://github.com/VRCFury/VRCFury", "v1.1341.0", "VRCFury"),
-    ("Meshia", "https://github.com/RamType0/Meshia.MeshSimplification", "3.2.0", "Meshia.MeshSimplification"),
+    ("Modular Avatar", "https://github.com/bdunderscore/modular-avatar", "1.18.7", "modular-avatar"),
+    ("AvatarOptimizer", "https://github.com/anatawa12/AvatarOptimizer", "v1.9.22", "AvatarOptimizer"),
+    ("VRCFury", "https://github.com/VRCFury/VRCFury", "v1.1445.0", "VRCFury"),
+    ("Meshia", "https://github.com/RamType0/Meshia.MeshSimplification", "3.3.1", "Meshia.MeshSimplification"),
     ("MA2BT", "https://github.com/Null-K/MA2BT", "v2.0.2", "MA2BT"),
-    ("TexTransTool", "https://github.com/ReinaS-64892/TexTransTool", "v1.0.1", "TexTransTool"),
-    ("LAC", "https://github.com/Limitex/avatar-compressor", "v0.8.0", "avatar-compressor"),
+    ("TexTransTool", "https://github.com/ReinaS-64892/TexTransTool", "v1.0.2", "TexTransTool"),
+    ("LAC", "https://github.com/Limitex/avatar-compressor", "v0.9.0", "avatar-compressor"),
     # Shader 工具
-    ("lilToon", "https://github.com/lilxyzw/lilToon", "2.3.3", "lilToon"),
-    ("ORL Shaders", "https://github.com/orels1/orels-Unity-Shaders", "v7.2.0", "orels-Unity-Shaders"),
-    ("UnlitWF", "https://github.com/whiteflare/Unlit_WF_ShaderSuite", "UnlitWF_Shader_20260208", "Unlit_WF_ShaderSuite"),
-    ("Graphlit", "https://github.com/z3y/Graphlit", "v2.7.2", "Graphlit"),
+    ("lilToon", "https://github.com/lilxyzw/lilToon", "2.4.1", "lilToon"),
+    ("ORL Shaders", "https://github.com/orels1/orels-Unity-Shaders", "v7.3.1", "orels-Unity-Shaders"),
+    ("UnlitWF", "https://github.com/whiteflare/Unlit_WF_ShaderSuite", "UnlitWF_Shader_20261101", "Unlit_WF_ShaderSuite"),
+    ("Graphlit", "https://github.com/z3y/Graphlit", "v2.7.4", "Graphlit"),
     ("AudioLink", "https://github.com/llealloo/audiolink", "v3.1.2", "audiolink"),
     # 辅助工具
-    ("VizVid (VVMW)", "https://github.com/JLChnToZ/VVMW", "1.7.5", "VVMW"),
-    ("UdonVoiceUtils", "https://github.com/Guribo/UdonVoiceUtils", "5.1.4", "UdonVoiceUtils"),
+    ("VizVid (VVMW)", "https://github.com/JLChnToZ/VVMW", "1.8.3", "VVMW"),
+    ("UdonVoiceUtils", "https://github.com/Guribo/UdonVoiceUtils", "7.0.0", "UdonVoiceUtils"),
     ("Sardinal", "https://github.com/ikuko/Sardinal", "v0.9.8", "Sardinal"),
-    ("ULocalization", "https://github.com/ikuko/ULocalization", "v0.8.16", "ULocalization"),
-    ("VRCLightVolumes", "https://github.com/REDSIM/VRCLightVolumes", "v2.1.3", "VRCLightVolumes"),
+    ("ULocalization", "https://github.com/ikuko/ULocalization", "v0.8.17", "ULocalization"),
+    ("VRCLightVolumes", "https://github.com/REDSIM/VRCLightVolumes", "v3.0.1", "VRCLightVolumes"),
     ("EasyQuestSwitch", "https://github.com/vrchat-community/EasyQuestSwitch", "v1.4.0", "EasyQuestSwitch"),
     ("VPM Template", "https://github.com/vrchat-community/template-package", "1.0.0", "template-package"),
-    ("VRCX", "https://github.com/vrcx-team/VRCX", "v2026.05.03", "VRCX"),
+    ("VRCX", "https://github.com/vrcx-team/VRCX", "v2026.09.16", "VRCX"),
 ]
 
 
@@ -76,13 +104,13 @@ def parse_repo(github_url: str) -> tuple:
 def http_get_json(url: str) -> dict:
     """HTTP GET 返回 JSON 字典;失败/非200返回 {'error': ...}"""
     try:
-        req = urllib.request.Request(
-            url,
-            headers={
-                'User-Agent': USER_AGENT,
-                'Accept': 'application/vnd.github+json',
-            },
-        )
+        headers = {
+            'User-Agent': USER_AGENT,
+            'Accept': 'application/vnd.github+json',
+        }
+        if GITHUB_TOKEN:
+            headers['Authorization'] = f'Bearer {GITHUB_TOKEN}'
+        req = urllib.request.Request(url, headers=headers)
         with urllib.request.urlopen(req, timeout=HTTP_TIMEOUT) as resp:
             if resp.status != 200:
                 return {'error': f'HTTP {resp.status}'}
@@ -186,6 +214,11 @@ def normalize_version(v: str) -> str:
     v = v.strip()
     # 优先尝试找 d+.d+... 模式
     m = re.search(r'(\d+(?:\.\d+){1,3})', v)
+    if m:
+        return m.group(1)
+    # A14/verifier 2026-11-10: 回退到日期编码 tag (如 UnlitWF_Shader_20261101)
+    # 原实现只走点号正则, 纯日期 tag 提取为空 -> 误报 unknown
+    m = re.search(r'(\d{8})', v)
     return m.group(1) if m else ''
 
 
@@ -264,9 +297,16 @@ def audit_one_tool(name: str, url: str, kb_version: str, alias: str) -> dict:
             'last_commit_days': -1,
             'status': '⚠️',
             'error': release['error'],
+            'unknown_kind': 'query',
         }
     latest_ver = release.get('tag_name', '')
     diff = compare_versions(kb_version, latest_ver)
+    unknown_kind = ''
+    parse_error = ''
+    if diff == 'unknown':
+        # A14/verifier: 区分「网络查询失败」与「版本号无法解析」, 后者提示重跑会误导
+        unknown_kind = 'parse'
+        parse_error = '版本号无法解析（格式）: kb=%s latest=%s' % (kb_version, latest_ver)
     last_commit = get_latest_commit(url)
     days = days_since(last_commit)
     return {
@@ -278,7 +318,8 @@ def audit_one_tool(name: str, url: str, kb_version: str, alias: str) -> dict:
         'last_commit': last_commit,
         'last_commit_days': days,
         'status': status_emoji(diff, last_commit),
-        'error': '',
+        'error': parse_error,
+        'unknown_kind': unknown_kind,
     }
 
 
@@ -307,7 +348,7 @@ def build_markdown_report(results: list) -> str:
     lines.append(f"| 总工具数 | {total} | 100% |\n")
     lines.append(f"| 知识库最新或领先(latest/same) | {latest_count} | {latest_count*100//total if total else 0}% |\n")
     lines.append(f"| 已过期(outdated) | {outdated_count} | {outdated_count*100//total if total else 0}% |\n")
-    lines.append(f"| 未知(查询失败) | {unknown_count} | {unknown_count*100//total if total else 0}% |\n")
+    lines.append(f"| 未知(查询失败/无法解析) | {unknown_count} | {unknown_count*100//total if total else 0}% |\n")
     lines.append(f"| 同版本但已停滞(> {STALE_DAYS} 天) | {stale_active} | - |\n\n")
     lines.append("---\n\n")
 

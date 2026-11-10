@@ -181,8 +181,8 @@ LLMWikiPage/                     # 知识页根（现行知识库）
 | 工具 | 库内记录 → 现行 | 备注 |
 |---|---|---|
 | Modular Avatar | 1.17.1 → **1.18.7** | 1.18.0 新增 `MA Move To` / `MA Outfit Root`、UV Tile 顶点过滤；1.19.0 仅到 rc.0，**不可用于生产** |
-| AvatarOptimizer | v1.9.14 → **v1.9.21** | 末版支持 SDK 3.10.6 的 Native Face Tracking / Material Contacts / VRCRaycast v1.1 |
-| VRCFury | v1.1341.0 → **v1.1442.0** | 该区间 200+ tag 的 Release 正文全空，本库改用 compare API 提交标题做主题归并，页面内标 [FACT]/[COMMIT] 分级 |
+| AvatarOptimizer | v1.9.14 → **v1.9.22** | v1.9.21 起支持 SDK 3.10.6 的 Native Face Tracking / Material Contacts / VRCRaycast v1.1；v1.9.22 规避「Use All Tracking Keys」开关失效 |
+| VRCFury | v1.1341.0 → **v1.1445.0** | 该区间 200+ tag 的 Release 正文全空，本库改用 compare API 提交标题做主题归并，页面内标 [FACT]/[COMMIT] 分级 |
 | Meshia | 3.2.0 → **3.3.1** | 默认保留手骨、只读 mesh 支持、KD-tree 球查询修正 |
 | TexTransTool | v1.0.1 → **v1.0.2** | 仅 TextureBlender 内存泄漏修复；v1.1.0 仍是 beta |
 | LAC (avatar-compressor) | v0.8.0 → **v0.9.0** | **唯一 breaking：公开 C# API 关闭**（类型 internal 化）；另含去锯齿、lilToon 贴图烘焙、VRCFury 构建过压修复 |

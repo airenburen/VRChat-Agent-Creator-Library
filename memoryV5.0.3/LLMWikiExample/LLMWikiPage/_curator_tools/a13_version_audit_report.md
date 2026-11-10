@@ -11,8 +11,8 @@
 | 指标 | 数量 | 占比 |
 |------|------|------|
 | 总工具数 | 20 | 100% |
-| 知识库最新或领先(latest/same) | 18 | 90% |
-| 已过期(outdated) | 2 | 10% |
+| 知识库最新或领先(latest/same) | 20 | 100% |
+| 已过期(outdated) | 0 | 0% |
 | 未知(查询失败/无法解析) | 0 | 0% |
 | 同版本但已停滞(> 365 天) | 1 | - |
 
@@ -23,8 +23,8 @@
 | # | 工具名 | 知识库版本 | 最新版本 | 差异 | 上次 Commit | 距今天数 | 状态 |
 |---|--------|------------|----------|------|-------------|----------|------|
 | 1 | Modular Avatar | `1.18.7` | `1.18.7` | same | 2026-11-08 | 3d | ✅ |
-| 2 | AvatarOptimizer | `v1.9.21` | `v1.9.22` | outdated | 2026-11-10 | 1d | 🔴 |
-| 3 | VRCFury | `v1.1442.0` | `com.vrcfury.vrcfury/1.1445.0` | outdated | 2026-11-10 | 1d | 🔴 |
+| 2 | AvatarOptimizer | `v1.9.22` | `v1.9.22` | same | 2026-11-10 | 1d | ✅ |
+| 3 | VRCFury | `v1.1445.0` | `com.vrcfury.vrcfury/1.1445.0` | same | 2026-11-10 | 1d | ✅ |
 | 4 | Meshia | `3.3.1` | `3.3.1` | same | 2026-11-04 | 7d | ✅ |
 | 5 | MA2BT | `v2.0.2` | `v2.0.2` | same | 2026-05-09 | 186d | ✅ |
 | 6 | TexTransTool | `v1.0.2` | `v1.0.2` | same | 2026-06-26 | 138d | ✅ |
@@ -47,14 +47,7 @@
 
 ## 分组明细
 
-### 🔴 已过期(2 个)
-
-**说明**: 知识库版本低于 GitHub 最新 Release,且项目仍活跃(> 0 天内有 commit)。
-
-| 工具 | 知识库 | 最新 | 差距 |
-|------|--------|------|------|
-| AvatarOptimizer | `v1.9.21` | `v1.9.22` | 见原文 |
-| VRCFury | `v1.1442.0` | `com.vrcfury.vrcfury/1.1445.0` | 见原文 |
+### ✅ 无过期工具
 
 ### 🟡 已停滞(1 个,版本一致但无更新 > 365 天)
 
@@ -66,7 +59,7 @@
 
 ## 治理建议
 
-- **🔴 优先**:更新 2 个过期工具的 frontmatter.version。
+- 知识库所有工具版本均为最新或领先,无需更新。
 - **🟡 评估**::1 个工具版本一致但长期无 commit,建议评估是否仍维护。
 
 ---
@@ -76,8 +69,8 @@
 | # | 工具名 | 知识库版本 | GitHub 仓库 |
 |---|--------|------------|-------------|
 | 1 | Modular Avatar | `1.18.7` | https://github.com/bdunderscore/modular-avatar |
-| 2 | AvatarOptimizer | `v1.9.21` | https://github.com/anatawa12/AvatarOptimizer |
-| 3 | VRCFury | `v1.1442.0` | https://github.com/VRCFury/VRCFury |
+| 2 | AvatarOptimizer | `v1.9.22` | https://github.com/anatawa12/AvatarOptimizer |
+| 3 | VRCFury | `v1.1445.0` | https://github.com/VRCFury/VRCFury |
 | 4 | Meshia | `3.3.1` | https://github.com/RamType0/Meshia.MeshSimplification |
 | 5 | MA2BT | `v2.0.2` | https://github.com/Null-K/MA2BT |
 | 6 | TexTransTool | `v1.0.2` | https://github.com/ReinaS-64892/TexTransTool |

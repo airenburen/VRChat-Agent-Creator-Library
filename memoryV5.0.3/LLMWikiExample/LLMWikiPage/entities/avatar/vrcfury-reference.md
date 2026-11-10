@@ -6,7 +6,7 @@ status: active
 source: 本地知识库整理
 source_type: community
 version: 1.3
-upstream_version: "v1.1442.0 (2026-11-05 stable); beta 通道 v1.1442.1-beta.15 (2026-11-09)"
+upstream_version: "v1.1445.0 (2026-11-10 stable); beta 通道 v1.1442.1-beta.18 (2026-11-10)"
 last_review: 2026-11-10
 confidence: High
 tags:
@@ -27,12 +27,12 @@ related:
   - avatar-dynamic-bone-limits.md
 type: entity
 created: 2026-07-04
-sources: 本地知识库整理 + VRCFury GitHub releases/compare (v1.1341.0 → v1.1442.0, 复核 2026-11-10) + vrcfury.com 官方文档
+sources: 本地知识库整理 + VRCFury GitHub releases/compare (v1.1341.0 → v1.1445.0, 复核 2026-11-11) + vrcfury.com 官方文档
 updated: 2026-11-10
 ---
 # VRCFury 完整参考 — Non-Destructive Avatar 工具与优化系统
 
-> 状态：⚠️ **仍活跃维护**（2026-11-09 仍有 beta 发布；稳定版 v1.1442.0 / 2026-11-05），但被 Modular Avatar 覆盖部分场景
+> 状态：⚠️ **仍活跃维护**（2026-11-10 当日连续发布 1.1443/1.1444/1.1445 三个稳定版；当前稳定版 v1.1445.0），但被 Modular Avatar 覆盖部分场景
 > 来源：https://github.com/VRCFury/VRCFury + https://vrcfury.com + https://github.com/VRCFury/vrcfury.com
 
 ---
@@ -43,7 +43,7 @@ updated: 2026-11-10
 
 | 维度 | 实际情况 |
 |------|----------|
-| **维护状态** | ✅ 活跃（2026-11-05 发布稳定版 v1.1442.0，2026-11-09 仍在出 beta 构建） |
+| **维护状态** | ✅ 活跃（2026-11-10 单日出 1.1443/1.1444/1.1445 三个稳定版） |
 | **代码规模** | C# 98.9% + HLSL 1.1% |
 | **官方下载页** | https://vrcfury.com 仍提供 |
 | **核心定位** | "Non-Destructive Tools for VRChat Avatars" |
@@ -835,7 +835,7 @@ VRCFury 自动辅助跨平台参数对齐：
 
 ### ✅ 推荐：VCC 仓库一键安装
 
-VRCFury 已上线 VCC 官方仓库，当前稳定版 **v1.1442.0 (2026-11-05)**（beta 通道已到 v1.1442.1-beta.15, 2026-11-09），可通过以下方式一键安装：
+VRCFury 已上线 VCC 官方仓库，当前稳定版 **v1.1445.0 (2026-11-10)**（beta 通道已到 v1.1442.1-beta.18, 2026-11-10），可通过以下方式一键安装：
 
 > 📌 **版本说明（2026-11-10 复核）**：VRCFury 的 Release 是**每个 patch 一个 tag**的高频通道（v1.1341.0 → v1.1442.0 之间共 298 个提交、近百个 build），绝大多数 tag 的 Release 正文为空。因此本页以**tag 存在性 + 官方文档站 + 提交标题**为证据，不逐 tag 编 changelog。
 
@@ -922,7 +922,7 @@ VRCFury 官方仓库 ID：`com.vrcfury.vcc`，包名：`com.vrcfury.vrcfury`。
 |------|------|
 | VRCFury 仍维护（最近发布 2026-11-09） | ✅ FACT |
 | VRCFury 已支持 VCC 仓库一键安装(`https://vcc.vrcfury.com`,2026 年) | ✅ FACT(官网 + VPM 目录) |
-| VRCFury 当前稳定版 v1.1442.0（2026-11-05）；beta 通道 v1.1442.1-beta.15（2026-11-09） | ✅ FACT(GitHub releases tag 列表) |
+| VRCFury 当前稳定版 v1.1445.0（2026-11-10）；beta 通道 v1.1442.1-beta.18（2026-11-10） | ✅ FACT(GitHub releases tag 列表) |
 | VRCFury 与 MA 共存有冲突 | ✅ FACT |
 | Parameter Compressor 将所有 Float/Int 压到 16 bit | ✅ FACT（官网 + PR#238 验证） |
 | Direct Tree Optimizer 合并层为 Direct Blend Tree | ✅ FACT（官网文档） |
@@ -1048,8 +1048,8 @@ VRCFury 官方仓库 ID：`com.vrcfury.vcc`，包名：`com.vrcfury.vrcfury`。
 | 项 | 值 | 证据 |
 |----|-----|------|
 | 库内记录 | v1.1341.0+ (2026-06-16) | 本页旧 frontmatter |
-| 当前稳定版 | **v1.1442.0 (2026-11-05)** | [FACT] [release tag](https://github.com/VRCFury/VRCFury/releases/tag/com.vrcfury.vrcfury%2F1.1442.0) |
-| beta 通道 | v1.1442.1-beta.15 (2026-11-09) | [FACT] releases 列表 |
+| 当前稳定版 | **v1.1445.0 (2026-11-10)** | [FACT] [release tag](https://github.com/VRCFury/VRCFury/releases/tag/com.vrcfury.vrcfury%2F1.1445.0) |
+| beta 通道 | v1.1442.1-beta.18 (2026-11-10) | [FACT] releases 列表 |
 | 区间提交数 | 298 | [COMMIT] compare API |
 | 包元数据 | `unity: 2022.3`、`hideInEditor: true`、legacy 目录/文件迁移表齐全 | [FACT] `com.vrcfury.vrcfury/package.json` @ 仓库 HEAD |
 
@@ -1077,6 +1077,35 @@ VRCFury 官方仓库 ID：`com.vrcfury.vcc`，包名：`com.vrcfury.vrcfury`。
 
 来源：
 - [FACT] 版本：[releases 列表](https://github.com/VRCFury/VRCFury/releases) · [v1.1442.0 tag](https://github.com/VRCFury/VRCFury/releases/tag/com.vrcfury.vrcfury%2F1.1442.0) · [compare 1.1341.0...1.1442.0](https://github.com/VRCFury/VRCFury/compare/com.vrcfury.vrcfury%2F1.1341.0...com.vrcfury.vrcfury%2F1.1442.0)
+
+---
+
+## 18.1 v1.1442.0 → v1.1445.0（2026-11-10 单日三个稳定版，2026-11-11 复核）
+
+> 证据分级同 §18：[FACT] = tag 存在 / 官方原文；[COMMIT] = 仓库提交标题（`compare/1.1442.0...1.1445.0`，共 **84** 提交）。
+> 三个 tag 的 Release 正文实测均为空（`body` 长度 0），故本节结论全部来自提交标题归并，**未逐条实测运行时行为**。
+
+| 项 | 值 |
+|---|---|
+| 稳定版 | **v1.1445.0**（2026-11-10 16:39 UTC） |
+| 同日中间版 | v1.1443.0（15:11 UTC）、v1.1444.0（15:59 UTC） |
+| beta 通道 | v1.1442.1-beta.18（2026-11-10 06:32 UTC） |
+| 提交数 | 1.1442.0 → 1.1445.0 共 84 |
+
+**主题归并（按对使用者的影响排序）**
+
+| 类别 | 变更 | 说明 |
+|---|---|---|
+| SPS 重构（主线） | 「SPS: Rip out screenspace」「Initial version of sps3 deformation」「SPS: Deform during shadowcaster」「SPS: Support shadergraph assets」「Add new logic for sps3 senders」 | **SPS 第三代形变**：移除 screenspace 实现，改为在 shadowcaster pass 期间形变，并支持 Shader Graph 资产 |
+| SPS 优化 | 多条「SPS: Perf improvements」、flatten plug 层级、压缩 blendtree、socket touch zone 重做 | 性能与结构精简，属内部优化 |
+| SPS 选项收敛 | 「Centralize auto/legacy/tip light/tps depth support…remove depthpass plug options, remove stealth mode, removed options menu」 | **选项菜单被移除**，depth pass plug 选项与 stealth 模式取消 —— 旧配置项可能失效 |
+| SPS 修复 | 修复 radius offset、plug 进入时的 radius、width 值可能为 0 | 接触判定精度 |
+| SDK 支持策略 | 「Remove support for the last vrcsdk beta (only support stable for simplicity)」 | **只支持 stable SDK**，不再兼容 beta 通道 —— 用 beta SDK 的用户需回退 |
+| Contacts 联动 | 「Fix vrcsdk contact receiver inspector not updating live in play mode」「Fix gesture manager not supporting contact receiver advanced params」「Make depth anims and OGB use the same receivers…using advanced params」 | 依赖 3.10.6 的 Advanced Parameters，与 KB 的 Contacts 页呼应 |
+| 编辑器体验 | socket guide stop 可点击跳转、socket path gizmo 更贴合 sps3 shader、改进 stop 编辑器、移除 custom tangents UI | 纯编辑器侧 |
+
+> ⚠️ **不要推广**：以上只对 v1.1445.0 成立。尤其「SPS 选项菜单被移除」与「不再支持 SDK beta」两条是**行为变化**，旧教程里描述的选项位置与 beta SDK 流程可能已经不适用。
+> ⚠️ **未实测**：本库没有 VRCFury 构建环境，上述条目来自提交标题，未验证运行时效果。若要给读者强结论，需在真实 Avatar 项目上跑一次构建。
 - [FACT] 安装与支持口径：<https://vrcfury.com/download/>
 - [FACT] 组件文档：<https://github.com/VRCFury/vrcfury.com/tree/main/docs>
 

@@ -6,7 +6,7 @@ status: active
 source: 本地知识库整理
 source_type: community
 version: 1.2
-upstream_version: "v1.9.21 (2026-10-30); v1.9.13 verified 2026-05-13"
+upstream_version: "v1.9.22 (2026-11-10); v1.9.13 verified 2026-05-13"
 last_review: 2026-11-10
 confidence: Medium
 tags:
@@ -24,14 +24,14 @@ related:
   - avatar-fallback-system.md
 type: entity
 created: 2026-06-21
-sources: 本地知识库整理 + AvatarOptimizer GitHub releases (v1.9.13, 2026-05-13; v1.9.15 ~ v1.9.21, 2026-06-24 ~ 2026-10-30)
+sources: 本地知识库整理 + AvatarOptimizer GitHub releases (v1.9.13, 2026-05-13; v1.9.15 ~ v1.9.22, 2026-06-24 ~ 2026-11-10)
 updated: 2026-11-10
 ---
 # AAO: Avatar Optimizer 完整知识库
 
 > 来源: https://github.com/anatawa12/AvatarOptimizer
 > 文档: https://vpm.anatawa12.com/avatar-optimizer/en/
-> 当前版本: **v1.9.21** (2026-10-30) — 支持 VRCSDK 3.10.6 的 Native Face Tracking / Material Contacts / VRC Raycast v1.1
+> 当前版本: **v1.9.22** (2026-11-10) — 支持 VRCSDK 3.10.6 的 Native Face Tracking / Material Contacts / VRC Raycast v1.1；v1.9.22 起附带「Use All Tracking Keys」不能点击的 SDK 侧规避
 > 置信度: High (Tier A — 开源项目官方文档)
 
 ---
@@ -143,7 +143,7 @@ AAO 组件按 **Kind (种类)** 和 **安装位置** 分类：
 
 ## 4.1 版本分层说明（v1.7.6 历史文档 vs v1.9+ 当前主线）
 
-> ⚠️ 本知识库当前主线以 **v1.9.21 (2026-10-30)** 为准；若引用较早的汉化 / 社区整理文档（如 v1.7.6），必须明确标记为**历史版本说明**，不能回退成当前默认建议。
+> ⚠️ 本知识库当前主线以 **v1.9.22 (2026-11-10)** 为准；若引用较早的汉化 / 社区整理文档（如 v1.7.6），必须明确标记为**历史版本说明**，不能回退成当前默认建议。
 
 - **当前默认主线**：`Merge Material`、`Remove Mesh By Box`、`Remove Mesh By UV Tile`、`MeshRenderer 支持` 等 v1.9+ 能力。
 - **历史版本说明**：`Merge ToonLit Material` 属于旧版组件路径，现阶段只应作为迁移 / 兼容说明保留。
@@ -248,7 +248,7 @@ AAO 组件按 **Kind (种类)** 和 **安装位置** 分类：
 > - **Auto Merge Material Slots**（`#1334`）：自动合并相同材质的槽
 > - **Material Slots Mapping Fix**（`#1650`, 2026-02-14）：修复材质槽映射错误
 
-> 🆕 **v1.9.15 ~ v1.9.21 已修复的坑（2026-11-10 复核，遇到旧帖可直接判为"升级即解"）**：
+> 🆕 **v1.9.15 ~ v1.9.22 已修复的坑（2026-11-11 复核，遇到旧帖可直接判为"升级即解"）**：
 >
 > | 症状 | 修复版本 |
 > |------|----------|
@@ -848,14 +848,15 @@ public class MyCustomShaderInfo : ShaderInformation
 | **v1.9.13** | 修复 Merge PhysBone 与动画/Constraints 父节点组合时的行为破坏；修复意外要求 VRCSDK 3.8.0+ 的兼容性回归；修复单侧眼骨导致 EyeLook 停止工作的情况（2026-05-13） |
 | **v1.9.14** | 2026-05-26 — 维护性更新 + 性能 Linting 持续迭代 |
 | **v1.9.x** | Animator Optimizer (AnyState → Entry-Exit → BlendTree 转换)、Merge Material 继任 Merge ToonLit Material (PR #1516)、Max Texture Size 组件、Performance Linting |
-| **→ 以下 v1.9.15 ~ v1.9.21 为 2026-11-10 复核补入** | |
+| **→ 以下 v1.9.15 ~ v1.9.22 为 2026-11-10/11 复核补入** | |
 | **v1.9.15** | 2026-06-24 — `AutoMergeSkinnedMesh` 生成 renderer 的 layer 改为"源 renderer 中最常见的 layer"，修复优化后 layer 相机遇/灯/着色器 gimmick 在 Play 模式失效；Merge Bone 造成的 z-fighting 修复（兼容 see-through hair） |
 | **v1.9.16** | 2026-07-13 — **贴图用量估算逻辑重写**：不再借用 VRCSDK，改为自带实现，修掉 RenderTexture 未计入、CubeMap 只算 1/6、部分属性漏算三类偏差（**Refresh**：旧版性能提示的贴图占用可能偏高/偏低）；MergeMaterial 多 group 失效修复 |
 | **v1.9.17** | 2026-08-08 — 无 AAO 组件的 Avatar 上 Bug Report Helper 报错修复；Automatic Replace EndBone（骨骼位于 (0,0,0) 时）破坏 PhysBone 的修复 |
 | **v1.9.18** | 2026-08-31 — Unity 6000.x 最小可用支持（非官方支持）；**支持 3.10.5 的 Toon Standard AudioLink**；Merge Skinned Mesh + MA BlendShape Sync 的 "Differently animated BlendShape" 误报修复；VRCImpostorSettings 被误删修复 |
 | **v1.9.19** | 2026-09-11 — 只有无三角面子网格的 Skinned Mesh 被用作粒子 Shape 时损坏的修复；bHaptics 用 Contact 被误删的修复（**离屏/接触类 Avatar 必看**） |
 | **v1.9.20** | 2026-10-01 — 韩语本地化（UI 标签保留英文）；x100 缩放下相距 3mm 内的骨骼被错误合并的修复；同一 transform 上存在其他禁用 PhysBone Collider 时 Collider 被误删的修复 |
-| **v1.9.21** | **当前版本 (2026-10-30)** — **支持 VRCSDK 3.10.6 特性：Native Face Tracking、Material Contacts、VRC Raycast v1.1**（官方提示 3.10.6 特性在 open beta 后仍可能变动） |
+| **v1.9.21** | 2026-10-30 — **支持 VRCSDK 3.10.6 特性：Native Face Tracking、Material Contacts、VRC Raycast v1.1**（官方提示 3.10.6 特性在 open beta 后仍可能变动） |
+| **v1.9.22** | **当前版本 (2026-11-10)** — ①**规避 VRC Avatar Descriptor 的「Use All Tracking Keys」开关失效**（组件挂在 Avatar 根时该开关可能点不动；官方与 AAO 均判定为 VRCSDK 侧 bug，见 Canny sdk-bug-reports #3106）；②**修复 Remove Mesh by Mask 对 UV 接近 0 的网格可能不生效** |
 
 ---
 

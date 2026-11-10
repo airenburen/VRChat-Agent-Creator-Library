@@ -384,7 +384,7 @@ bool isLocked = ShaderOptimizer.IsLocked(myMaterial);
 |------|-----|
 | **文档版本** | 1.0 |
 | **创建日期** | 2026-07-04 |
-| **上游版本** | Poiyomi 10.0（本轮未复核）/ VRChat SDK 3.4.2+ / VRCFury v1.1442.0+ |
+| **上游版本** | Poiyomi 10.0（本轮未复核）/ VRChat SDK 3.4.2+ / VRCFury v1.1445.0+ |
 | **完整度** | 100%（核心机制 + 4 种 Copy 选项 + 工具链冲突 + API）|
 | **评审状态** | ✅ Stage 1 完成（创建）|
 | **下一步** | Stage 2 引用完整性验证 |
