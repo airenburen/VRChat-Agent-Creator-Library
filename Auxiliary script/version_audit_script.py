@@ -23,7 +23,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 MEMORY_ROOT = SCRIPT_DIR.parent / 'memory'
 REPORT_DIR = MEMORY_ROOT / '_curator_tools'
 sys.stdout.reconfigure(encoding='utf-8')
-TODAY = "2026-06-21"
+TODAY = date.today().isoformat()
 EXCLUDE_DIRS = {'_curator_tools', '__pycache__'}
 
 # GitHub API 公共端点(无需 token,限流 60 req/h)
@@ -109,10 +109,52 @@ def get_latest_release(github_url: str) -> dict:
         return data
     tag = data.get('tag_name') or ''
     published = data.get('published_at') or ''
-    return {
+    resolved = {
         'tag_name': tag,
         'published_at': published,
+        'upstream_latest': tag,
+        'prerelease_fallback': False,
     }
+    # GitHub 的 releases/latest 通常跳过 prerelease,但部分仓库把 beta 打成了正式 release
+    # (例如 VRCFury 的 com.vrcfury.vrcfury/1.1442.1-beta.15),会让知识库永远显示 outdated。
+    # 这里对 tag 名做一次预发布识别,命中则回退到最近一个非预发布 tag。
+    if is_prerelease_tag(tag):
+        fallback = _find_latest_stable_tag(owner, repo)
+        if fallback:
+            resolved['tag_name'] = fallback[0]
+            resolved['published_at'] = fallback[1]
+            resolved['prerelease_fallback'] = True
+    return resolved
+
+
+PRERELEASE_PATTERN = re.compile(
+    r'(?:^|[/_-])(?:beta|alpha|rc|pre|preview|dev|next|canary)(?:[.\d]|[/_-]|$)',
+    re.IGNORECASE,
+)
+
+
+def is_prerelease_tag(tag: str) -> bool:
+    """判断 tag 是否为预发布版本(含 beta/alpha/rc/pre/preview/dev)。"""
+    if not tag:
+        return False
+    return PRERELEASE_PATTERN.search(tag) is not None
+
+
+def _find_latest_stable_tag(owner: str, repo: str, pages: int = 2):
+    """回退策略:列出最近 releases,返回第一个非预发布 tag 的 (tag, published_at)。"""
+    for page in range(1, pages + 1):
+        api_url = f"{GITHUB_API}/repos/{owner}/{repo}/releases?per_page=30&page={page}"
+        data = http_get_json(api_url)
+        if 'error' in data or not isinstance(data, list) or not data:
+            return None
+        for rel in data:
+            rtag = rel.get('tag_name') or ''
+            if not rtag or rel.get('draft'):
+                continue
+            if is_prerelease_tag(rtag):
+                continue
+            return (rtag, rel.get('published_at') or '')
+    return None
 
 
 def get_latest_commit(github_url: str) -> str:
@@ -184,7 +226,7 @@ def days_since(iso_date: str) -> int:
         return -1
     try:
         d = date(int(m.group(1)), int(m.group(2)), int(m.group(3)))
-        return (date(2026, 6, 21) - d).days
+        return (date.today() - d).days
     except Exception:
         return -1
 
