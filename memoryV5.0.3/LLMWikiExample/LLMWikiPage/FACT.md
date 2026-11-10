@@ -31,7 +31,7 @@ related:
 
 source: 本地知识库整理
 source_type: community
-version: 3.4
+version: 3.5
 last_review: 2026-11-10
 confidence: High
 type: summary
@@ -61,8 +61,8 @@ LLMWikiPage/                     # 知识页根（现行知识库）
 │   ├── patterns/                # 核心设计模式（21 个文件）
 │   └── rules/                   # UdonSharp 语言/工程规则（10 个文件）
 ├── entities/                    # 实体域
-│   ├── api/                     # API 参考（19 个文件）
-│   ├── avatar/                  # Avatar 域（63 个文件 + shader 子域）
+│   ├── api/                     # API 参考（20 个文件）
+│   ├── avatar/                  # Avatar 域（65 个文件 + shader 子域）
 │   │   └── shader/              # Shader 知识库
 │   │       ├── filamented/      # Filamented PBR 着色器（3 个文件）
 │   │       ├── liltoon/         # lilToon 详细文档（17 个文件）
@@ -83,7 +83,7 @@ LLMWikiPage/                     # 知识页根（现行知识库）
 │       │   ├── video-players/   # 视频播放器（3 个文件）
 │       │   ├── vrc-graphics/    # VRC Graphics（4 个文件）
 │       │   └── vrctween/        # VRCTween（7 个文件）
-│       ├── scene-components/    # Scene Components（46 个文件）
+│       ├── scene-components/    # Scene Components（51 个文件）
 │       ├── examples/            # SDK 内置示例（11 个文件）
 │       │   ├── udon-example-scene/  # Udon Example Scene（6 个文件）
 │       │   ├── obstacle-course/     # 障碍赛道示例（6 个文件）
@@ -234,6 +234,7 @@ LLMWikiPage/                     # 知识页根（现行知识库）
 ### Avatar Pipeline
 - VRCPipelineManager ✅
 - Avatar 3.0 四行架构 ✅
+- **LI/MA 菜单显示名机制**（2026-11-10 自上游 v5.0.2 同步）：详见 [[entities/avatar/menu-display-name-resolution]]
 
 ### VRC Constraints (Avatar 域)
 - 6 种约束类型 ✅

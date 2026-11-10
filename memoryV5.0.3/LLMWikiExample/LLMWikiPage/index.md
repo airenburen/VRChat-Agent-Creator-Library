@@ -5,7 +5,7 @@ knowledge_level: applied
 status: active
 source: 本地知识库整理
 source_type: community
-version: 3.1
+version: 3.2
 last_review: 2026-11-10
 confidence: High
 tags:
@@ -199,7 +199,7 @@ updated: 2026-11-10
 | **Public Avatar Cloning** | `entities/avatar/public-avatar-cloning.md` ⭐NEW 2026-06-30 |
 | **Avatar Accessories** | `entities/avatar/accessories.md` ⭐NEW 2026-06-30 ← 配件系统(2026.2.1+) + Look Editor 整合 + PC=240/Quest=80 |
 | **VRCRaycast (Avatar)** | `entities/avatar/vrcraycast.md` ⭐NEW 2026-06-30 ← 骨骼 raycast + 2026.2.1 自动剥离 |
-| **LI/MA 菜单显示名** | `entities/avatar/menu-display-name-resolution.md` ⭐NEW 2026-11-10 ← 显示名从哪来：组件级 2 级 / Costume 级 7 级 / MA label 2 级回退链 |
+| **LI/MA 菜单显示名** | `entities/avatar/menu-display-name-resolution.md` ⭐NEW 2026-11-10 ← 显示名从哪来：组件级 2 级 / Costume 级 7 级 / MA label 2 级回退链 + 批量改名索引陷阱 |
 | **Blender 形态键** | `entities/avatar/blender-shape-keys.md` ⭐NEW 2026-07-04 ← FBX 导出 + Unity 导入 + 4 步避坑 |
 | **Shader 索引** | `entities/avatar/shader/index.md` ← ⭐ 完整对比矩阵 + 选择指南 |
 | **Shader (lilToon)** | `entities/avatar/shader/liltoon/` ← ⭐ 16 个文档，30%+ VRChat 使用 |
@@ -439,11 +439,11 @@ entities/vrchatsdk/                     ← VRChatSDK HTTP API (18 个文档) �
 | `entities/world/clientsim/` | ✅ | 8 | 已就位 |
 | `entities/world/shader/` | ✅ | 2 | 已就位 |
 | `entities/world/examples/` | ✅ | 31 | 标准 `index.md` + README 详细页并存 |
-| `entities/avatar/` | ✅ | 9 | 已就位 |
-| `entities/avatar/shader/` | ✅ | 4 + 子目录 | 已就位 |
+| `entities/avatar/` | ✅ | 65 | 已就位 |
+| `entities/avatar/shader/` | ✅ | 3 + 子目录（递归 36） | 已就位 |
 | `entities/avatar/shader/liltoon/` | ✅ | **17**(新增 outline.md)| ✅ 已修复 outline 缺失 |
-| `entities/avatar/shader/orl/` | ✅ | 5 | 已就位 |
-| `entities/avatar/shader/filamented/` | ✅ | 4 | 已就位 |
+| `entities/avatar/shader/orl/` | ✅ | 4 | 已就位 |
+| `entities/avatar/shader/filamented/` | ✅ | 3 | 已就位 |
 | `entities/avatar/shader/unlitwf/` | ✅ | 1 | 已就位 |
 | `concepts/hybrid/` | ✅ | 3 | 已就位 |
 | **`entities/vrchatsdk/`** | ✅ ⭐NEW | 19(+1) | **二次审计补全** |
@@ -454,7 +454,7 @@ entities/vrchatsdk/                     ← VRChatSDK HTTP API (18 个文档) �
 | `concepts/rules/` | ✅ | 8 | 已就位 |
 | `concepts/patterns/` | ✅ | 31 (+17) | 已就位(2026-06-20 +3 Sardinal 独有) |
 | `entities/world/patterns/` | ✅ ⭐NEW 2026-07-04 | 1 (+1) | **新建子目录**(dynamic-player-list) |
-| `entities/api/` | ✅ | 17 | 已就位 |
+| `entities/api/` | ✅ | 20 | 已就位 |
 | 源资料 review 快照 | ✅ | 4 (32 FAILs) | 已就位(2026-06-20 +4 FAILs) |
 | `meta/` | ✅ | 4 | 工作模式、KB维护协议、网络搜索准入协议已就位 |
 

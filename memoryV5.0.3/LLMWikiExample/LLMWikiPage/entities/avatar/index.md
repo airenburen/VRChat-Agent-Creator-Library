@@ -5,7 +5,7 @@ knowledge_level: applied
 status: active
 source: 本地知识库整理
 source_type: community
-version: 1.12
+version: 1.13
 last_review: 2026-11-10
 confidence: Medium
 tags:
@@ -148,7 +148,7 @@ updated: 2026-11-10
 | **Testing** | Avatar 3.0 Emulator (lyuma) | ✅ 已收录 (avatar-30-emulator.md) ⭐NEW 2026-07-04 |
 | **Toggle Tools** | MA Object Toggle + 第三方工具生态 | ✅ 已收录 (modular-avatar.md + avatar-30-toggle-tools.md) ⭐NEW 2026-07-04 |
 | **SDK** | Avatar SDK, Modular Avatar | ✅ 已收录 |
-| **工具链与审计** | FaceEmo, lilycalInventory, DressingTools, Gesture Manager, Unity MCP | ✅ 已收录 ⭐2026-08-19 (faceemo.md / lilycal-inventory.md / dressing-tools.md / gesture-manager.md / unity-mcp.md) |
+| **工具链与审计** | FaceEmo, lilycalInventory, DressingTools, Gesture Manager, Unity MCP, LI/MA 菜单显示名 | ✅ 已收录 ⭐2026-08-19 / 2026-11-10 (faceemo.md / lilycal-inventory.md / dressing-tools.md / gesture-manager.md / unity-mcp.md / menu-display-name-resolution.md) |
 | **审计与证据** | avatar-audit-methodology.md — 7 级证据分层 + TOOLCHAIN_PROFILE + 授权矩阵 | ✅ 已收录 ⭐2026-08-19 |
 | **Optimization** | 性能等级, VRAM, NDMF 工具, 最佳化步骤 | ✅ 已收录 |
 | **Shader** | lilToon, Poiyomi, SCSS, Avatar Shader, 特殊效果 | ✅ 已收录 (liltoon/ + poiyomi/ + scss.md) |
