@@ -10,6 +10,40 @@
 
 - 暂无待发布的变更。
 
+## [v5.0.3] - 2026-11-10 — SDK 3.10.6 知识基线
+
+> 新增知识根 `memoryV5.0.3/`，`memoryV5.0.2/` 保留不动（并存快照）。
+
+### Added
+- `entities/api/vrctween.md`（新）：VRCTween / VRCTweenHandle API 面 + 「与 DOTween 的边界」。
+- `entities/world/scene-components/` 新增 5 页：`vrc-billboard.md`、`vrc-velocitytracker.md`、`vrc-placementzone.md`（均 3.10.6）、`world-quality-settings.md`（3.10.5）、`interact-outline-renderers.md`（3.10.5/3.10.6）。
+- `_curator_tools/`：本轮审计产物（validation / governance / version audit / 团队审计 / SDK oracle / 基线快照）。
+
+### Changed
+- **SDK 基线 3.10.3 → 3.10.6**：3.10.4（VRCTween、Contacts Box 形状、World 侧 VRCPhysBoneCollider 暴露、DataList/DataDictionary 容量）、3.10.5（VRCQualitySettings 读写、WorldQualitySettings、Assembly Version Defines、Assets/Packages 建 U# 脚本）、3.10.6（6 个 VRC Constraint 的 source 方法组 + SmoothingFactor、VRCBillboard/VRCVelocityTracker/VRCPlacementZone、U# enum 比较与命名参数修复、null VRCUrl 同步修复）。
+- **15 项第三方工具版本追平**：MA 1.18.7 / AAO v1.9.21 / VRCFury v1.1442.0 / Meshia 3.3.1 / TTT v1.0.2 / LAC v0.9.0 / lilToon 2.4.1 / ORL v7.3.1 / UnlitWF 20261101 / Graphlit v2.7.4 / VRCLV v3.0.1 / VVMW 1.8.3 / UVU 7.0.0 / NDMF 1.14.8 / ULocalization v0.8.17。
+- `FACT.md` 新增「VRChat SDK 版本基线」与工具链现行版本表；`index.md`、`_always-load.md`、域索引同步。
+- 仓库根新增 `.gitattributes`（`* text=auto eol=lf`），固定入库换行。
+
+### Fixed
+- **`OnContactStay` 不存在**：Contacts 仅 `OnContactEnter` / `OnContactExit`；持续接触须 Enter 置标志 + Exit 清标志 + `Update` 读取。全库相关表述统一纠正。
+- **`GetSourceCount()` / `SetSourceWeight()` 不存在**：按索引改权重须 `GetSource` → 改 `Weight` → `SetSource`。
+- **VRCTween 归属**：3.10.4 引入（原记 3.7+，无锚点）。
+- **`Use Face Proximity`** 为组件 authoring 字段，非 Udon wrapper 方法。
+- **`{parameter}_SenderType` 0–4 编码**补官方原文与生效条件（仅 Receiver 勾选 Advanced Parameters 后生成）。
+- **lilToon 2.1.5 / 2.1.6 归属**：毛发 VRCLV 改逐像素属 2.1.5；2.1.6 为 VRCLV optimization。
+- **lilToon / UnlitWF 的 VRCLV 与 LTCGI 支持**：原对比表误标为不支持（lilToon 1.10.0 起 VRCLV、1.8.0 起 LTCGI）。
+- **相对链接错层 8 处**（shader 索引 / comparisons 的 `[[...]]` 残留与 `../` 层数错误）。
+
+### 保留（本轮不改）
+- 三个导出快照页（`udon-type-exposure` / `exposed-types` / `not-exposed`）**保留 3.10.3**，注明「本轮未重新导出」——无证据不抬版本。
+- `related` 字段格式债（150 条 `[[...]]` 残留 / 47 条目标缺失 / 3 条中文脏数据）与 35 处正文伪链接，均与 v5.0.2 基线持平，建议单独立项。
+
+### 校验
+- `validation_script.py`：**421/421 通过，0 失败**（基线 411/415，4 失败）。
+- 治理死链：220 → 214（无新增）；版本审计 outdated：14 → 1（VRCFury beta tag 口径）、unknown 1 → 0。
+
+
 ## [v5.0.2] - 2026-11-10 — 显示名机制新页 + 索引同步 + 目录版本号对齐
 
 > 版本号跳过 5.0.1（未单独发布），本批改动一并进入 v5.0.2。

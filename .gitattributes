@@ -1,0 +1,14 @@
+# 统一入库换行：LF（仓库既有约定）
+* text=auto eol=lf
+
+# 明确二进制，避免被当文本处理
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.psd binary
+*.fbx binary
+*.unity binary
+*.asset binary
+*.dll binary
+*.zip binary
